@@ -1,6 +1,5 @@
 // init Stripe
-let stripe = null;
-
+let stripe;
 const stripePk = fetch("/conf/stripe_pk")
     .then(resp => resp.text())
     .then(pk => stripe = Stripe(pk))
@@ -11,6 +10,7 @@ const stripePk = fetch("/conf/stripe_pk")
 checkStatus();
 
 // fetch customers list
+let customers;
 window.onload = (e) => {
     document.querySelector("#customer-select").classList.add("busy");
     fetch("/api/customer", { method: "GET" }).then(resp => {
@@ -26,6 +26,10 @@ window.onload = (e) => {
                 option.text = c.name + ' ' + c.description;
                 clSelect.appendChild(option);
             });
+
+            customers = new Map(
+                customersList.map(obj => {return [obj.clientCustomerId, obj];})
+            );
         }
     }).finally(() => {
         document.querySelector("#customer-select").classList.remove("busy");
@@ -73,7 +77,7 @@ async function handleSetAmount(e) {
     };
     elements = stripe.elements({ clientSecret, appearance });
 
-    const linkAuthenticationElement = elements.create("linkAuthentication");
+    const linkAuthenticationElement = elements.create("linkAuthentication", {defaultValues: {email: customers.get(customer_id).email}});
     linkAuthenticationElement.mount("#link-authentication-element");
 
     linkAuthenticationElement.on('change', (event) => {
