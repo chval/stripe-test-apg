@@ -1,0 +1,23 @@
+{
+  "name": "test-stripe-apg",
+  "version": "0.0.1",
+  "description": "Test Stripe payment workflow via Ascio Payment Gateway API",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "stripe",
+    "payment"
+  ],
+  "author": "Vadym Nechval",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "bootstrap": "^5.3.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "nodemon": "^1.14.9",
+    "stripe": "^12.9.0"
+  }
+}

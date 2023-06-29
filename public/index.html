@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/index.css" rel="stylesheet">
+
+    <title>APG test page</title>
+</head>
+
+<body>
+    <div class="container py-5">
+        <h1>Billing and Payments</h1>
+        <ul class="nav nav-tabs" id="add-funds-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="add-funds-tab" data-bs-toggle="tab" data-bs-target="#add-funds"
+                    type="button" role="tab" aria-controls="add-funds" aria-selected="true">Add Funds</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="add-funds-tab-content">
+            <div class="tab-pane fade show active" id="add-funds" role="tabpanel" aria-labelledby="add-funds-tab">
+                <div class="row p-2" id="customer-select">
+                    <div class="col-md-4">
+                        <select id="customers" class="form-select" aria-label="Customers" required></select>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="spinner-border spinner-border-lg text-warning" role="status" aria-hidden="true" style="display:none;"></span>
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col-md-9">
+                        <h2>Payment Method</h2>
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div class="col-md-9">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment-method" id="payment-method-card" value="card" checked required>
+                            <label class="form-check-label" for="payment-method-card">
+                                Credit Card
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <form class="row p-2 g-3 align-items-center needs-validation" id="payment-form">
+                    <div class="col-md-4">
+                        <label for="amount" class="visually-hidden">Amount</label>
+                        <div class="input-group">
+                            <div class="input-group-text">$</div>
+                            <input type="number" class="form-control" id="amount" required>
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-grid">
+                        <button class="btn btn-light" type="submit">
+                            Set Amount <span class="spinner-border spinner-border-sm text-info" role="status" aria-hidden="true" style="display:none;"></span>
+                        </button>
+                    </div>
+                </form>
+                <div class="row p-2">
+                    <div id="link-authentication-element" class="col-md-6">
+                        <!--Stripe.js injects the Link Authentication Element-->
+                    </div>
+                </div>
+                <div class="row p-2">
+                    <div id="payment-element" class="col-md-6">
+                        <!--Stripe.js injects the Payment Element-->
+                    </div>
+                </div>
+                <div class="row p-2" id="payment-confirm" style="display:none;">
+                    <div class="col-md-6 d-grid">
+                        <button class="btn btn-dark" id="btn-payment-confirm">
+                            Pay <span class="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true" style="display:none;"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" id="payment-status"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/js/index.js" defer></script>
+</body>
+
+</html>

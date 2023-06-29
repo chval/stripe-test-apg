@@ -1,0 +1,3 @@
+#customer-select.busy .spinner-border { display:inline-block !important; }
+#payment-form.busy .spinner-border { display:inline-block !important; }
+#btn-payment-confirm.busy .spinner-border { display:inline-block !important; }
