@@ -16,7 +16,7 @@ npm install
 Create <ins>.env</ins> file with next variables:
 ```
 SERVER_PORT=443
-APG_ENDPOINT=https://paymentgateway.demo.ascio.loc/api/
+APG_ENDPOINT=https://paymentgateway.demo.ascio.loc/api
 TOKEN_ENDPOINT=https://auth.demo.ascio.loc/connect/token
 # client id and secret from https://auth.demo.ascio.loc/
 CLIENT_ID=
